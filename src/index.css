@@ -102,6 +102,7 @@ h1 {
     flex-direction: column;
     box-sizing: border-box;
     padding: 2.5vw;
+    font-size: 1.4vw;
 }
 
 p {
