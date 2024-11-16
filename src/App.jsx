@@ -8,7 +8,13 @@ function App() {
 
     return (<>
         <div className="app-container">
-            <SeatLayout/>
+            <SeatLayout
+                // render={true}
+                // pass_femaleStudents={femaleStudents}
+                // pass_maleStudents={maleStudents}
+                // pass_sieTatib={sieTatib}
+                // pass_sieIT={sieIT}
+                />
         </div>
     </>)
 }

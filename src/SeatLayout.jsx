@@ -1,5 +1,15 @@
 import Seat from "./Seat"
 
+// Durstenfeld shuffle algorithm
+function shuffleArray(array) {
+    for (var i = array.length - 1; i >= 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
 function generateSeat(rowNumber, femaleStudents, maleStudents, sieTatib, sieIT) {
     let resultRowSeats = [];
 
@@ -48,7 +58,7 @@ function generateSeat(rowNumber, femaleStudents, maleStudents, sieTatib, sieIT) 
 function SeatLayout() {
     /*
         NOTE:
-            Yang dikeluarkan dari list:
+            Removed from list:
             14 = Grace  -> TATIB
             15 = Hansen -> IT
     */
@@ -56,6 +66,9 @@ function SeatLayout() {
     let maleStudents = [2, 3, 4, 5, 8, 11, 12, 13, 16, 17, 21, 23, 25, 27, 28, 32, 33, 34, 35];
     let sieTatib = 14;
     let sieIT = 15;
+
+    shuffleArray(femaleStudents);
+    shuffleArray(maleStudents);
 
     return (
         <div className="seat-layout-container">
