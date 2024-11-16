@@ -1,12 +1,4 @@
-import { useState } from 'react';
 import Seat from "./Seat"
-
-const femaleStudents_ori = [1, 6, 7, 9, 10, 18, 19, 20, 22, 24, 26, 29, 30, 31];
-const maleStudents_ori = [2, 3, 4, 5, 8, 11, 12, 13, 16, 17, 21, 23, 25, 27, 28, 32, 33, 34, 35];
-
-function shuffleArray(array) {
-    return array.sort(() => Math.random() - 0.5);
-}
 
 function generateSeat(rowNumber, femaleStudents, maleStudents, sieTatib, sieIT) {
     let resultRowSeats = [];
@@ -60,17 +52,12 @@ function SeatLayout() {
             14 = Grace  -> TATIB
             15 = Hansen -> IT
     */
+    let femaleStudents = [1, 6, 7, 9, 10, 18, 19, 20, 22, 24, 26, 29, 30, 31];
+    let maleStudents = [2, 3, 4, 5, 8, 11, 12, 13, 16, 17, 21, 23, 25, 27, 28, 32, 33, 34, 35];
     let sieTatib = 14;
     let sieIT = 15;
-    let [femaleStudents, setFemaleStudents] = useState([...femaleStudents_ori]); // unseated
-    let [maleStudents, setMaleStudents] = useState([...maleStudents_ori]); // unseated
 
-    function shuffleStudents() {
-        setFemaleStudents(shuffleArray([...femaleStudents_ori]));
-        setMaleStudents(shuffleArray([...maleStudents_ori]));
-    }
-
-    return (<>
+    return (
         <div className="seat-layout-container">
             <div className="seat-row long">
                 <Seat studentNumber="?" />
@@ -104,9 +91,7 @@ function SeatLayout() {
                 ))}
             </div>
         </div>
-
-        <button onClick={shuffleStudents}>Shuffle Students</button>
-    </>);
+    );
 }
 
 export default SeatLayout;

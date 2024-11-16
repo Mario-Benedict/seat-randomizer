@@ -1,5 +1,5 @@
 
-function Seat({ key, studentNumber }){
+function Seat({ studentNumber }){
     return (<>
         <div className="seat">
             {
