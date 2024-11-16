@@ -72,36 +72,51 @@ function SeatLayout() {
 
     return (
         <div className="seat-layout-container">
-            <div className="seat-row long">
+            <div className="seat-row">
                 <Seat studentNumber="?" />
                 {generateSeat(1, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                     <Seat key={number} studentNumber={number} />
                 ))}
             </div>
-            <div className="seat-row long">
+            <div className="seat-row">
                 <Seat studentNumber="?" />
                 {generateSeat(2, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                     <Seat key={number} studentNumber={number} />
                 ))}
             </div>
-            <div className="seat-row short">
-                <Seat studentNumber="?" />
-                {generateSeat(3, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
-                    <Seat key={number} studentNumber={number} />
-                ))}
-            </div>
-            <div className="seat-row short">
-                <Seat studentNumber="?" />
-                {generateSeat(4, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
-                    <Seat key={number} studentNumber={number} />
-                ))}
-            </div>
-            <div className="seat-row short">
-                <Seat studentNumber="?" />
-                <Seat studentNumber="?" />
-                {generateSeat(5, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
-                    <Seat key={number} studentNumber={number} />
-                ))}
+            <div className="container">
+                <div className="left">
+                    <div className="seat-row short">
+                        <Seat studentNumber="?" />
+                        {generateSeat(3, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
+                            <Seat key={number} studentNumber={number} />
+                        ))}
+                    </div>
+                    <div className="seat-row short">
+                        <Seat studentNumber="?" />
+                        {generateSeat(4, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
+                            <Seat key={number} studentNumber={number} />
+                        ))}
+                    </div>
+                    <div className="seat-row short">
+                        <Seat studentNumber="?" />
+                        <Seat studentNumber="?" />
+                        {generateSeat(5, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
+                            <Seat key={number} studentNumber={number} />
+                        ))}
+                    </div>
+                </div>
+                <div className="right">
+                    <div className="notes">
+                        <p className="header">Notes:</p>
+                        <div className="contents">
+                            <p>Special Roles:</p>
+                            <p className="tatib">Sie Tatib = 14 (Grace)</p>
+                            <p className="it">Sie IT = 15 (Hansen)</p>
+                        </div>
+                        <p>Refresh to regenerate!</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
