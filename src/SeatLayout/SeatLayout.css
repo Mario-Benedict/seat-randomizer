@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
+    border: 0.2vw solid var(--empty);
+    padding: 1.5vw;
+    border-radius: 1vw;
 }
 
 .seat-row {

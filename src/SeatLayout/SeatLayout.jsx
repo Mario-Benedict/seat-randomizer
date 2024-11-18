@@ -74,12 +74,14 @@ function SeatLayout() {
     return (
         <div className="seat-layout-container">
             <div className="seat-row">
+                <Seat studentNumber="none" />
                 <Seat studentNumber="?" />
                 {generateSeat(1, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                     <Seat key={number} studentNumber={number} />
                 ))}
             </div>
             <div className="seat-row">
+                <Seat studentNumber="none" />
                 <Seat studentNumber="?" />
                 {generateSeat(2, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                     <Seat key={number} studentNumber={number} />
@@ -88,18 +90,21 @@ function SeatLayout() {
             <div className="container">
                 <div className="left">
                     <div className="seat-row">
+                        <Seat studentNumber="none" />
                         <Seat studentNumber="?" />
                         {generateSeat(3, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                             <Seat key={number} studentNumber={number} />
                         ))}
                     </div>
                     <div className="seat-row">
+                        <Seat studentNumber="none" />
                         <Seat studentNumber="?" />
                         {generateSeat(4, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                             <Seat key={number} studentNumber={number} />
                         ))}
                     </div>
                     <div className="seat-row">
+                        <Seat studentNumber="?" />
                         <Seat studentNumber="?" />
                         <Seat studentNumber="?" />
                         {generateSeat(5, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (

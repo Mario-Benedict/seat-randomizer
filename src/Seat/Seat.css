@@ -22,3 +22,7 @@
 .seat__empty {
     border: 0.2vw solid var(--empty);
 }
+
+.seat__none {
+    border: 0.2vw solid var(--none);
+}

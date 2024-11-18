@@ -1,7 +1,12 @@
 import "./Seat.css"
 
 function Seat({ studentNumber }){
-    if (studentNumber == '?'){
+    if (studentNumber == 'none'){
+        return (
+            <div className="seat seat__none"></div>
+        )
+    }
+    else if (studentNumber == '?'){
         return (
             <div className="seat seat__empty">{studentNumber}</div>
         )
