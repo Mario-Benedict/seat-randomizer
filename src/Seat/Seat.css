@@ -1,0 +1,24 @@
+.seat {
+    font-size: 2.5vw;
+    border: 0.2vw solid var(--black);
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    width: 8vw;
+    max-width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+}
+
+.seat__tatib {
+    border: 0.2vw solid var(--tatib);
+}
+
+.seat__it {
+    border: 0.2vw solid var(--it);
+}
+
+.seat__empty {
+    border: 0.2vw solid var(--empty);
+}

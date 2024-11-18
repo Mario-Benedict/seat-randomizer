@@ -1,4 +1,5 @@
-import Seat from "./Seat"
+import "./SeatLayout.css"
+import Seat from "../Seat/Seat"
 
 // Durstenfeld shuffle algorithm
 function shuffleArray(array) {
@@ -86,19 +87,19 @@ function SeatLayout() {
             </div>
             <div className="container">
                 <div className="left">
-                    <div className="seat-row short">
+                    <div className="seat-row">
                         <Seat studentNumber="?" />
                         {generateSeat(3, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                             <Seat key={number} studentNumber={number} />
                         ))}
                     </div>
-                    <div className="seat-row short">
+                    <div className="seat-row">
                         <Seat studentNumber="?" />
                         {generateSeat(4, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
                             <Seat key={number} studentNumber={number} />
                         ))}
                     </div>
-                    <div className="seat-row short">
+                    <div className="seat-row">
                         <Seat studentNumber="?" />
                         <Seat studentNumber="?" />
                         {generateSeat(5, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (

@@ -1,0 +1,59 @@
+.seat-layout-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+}
+
+.seat-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.header {
+    margin-bottom: 1vw;
+    font-weight: 600;
+}
+
+.contents p {
+    margin-bottom: 0.75vw;
+}
+
+.tatib {
+    color: var(--tatib);
+    text-decoration: underline;
+}
+
+.it {
+    color: var(--it);
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+}
+
+.right {
+    flex: 1;
+}
+
+.notes {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 2.5vw;
+    font-size: 1.4vw;
+}

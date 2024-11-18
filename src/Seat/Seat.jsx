@@ -1,3 +1,4 @@
+import "./Seat.css"
 
 function Seat({ studentNumber }){
     if (studentNumber == '?'){
