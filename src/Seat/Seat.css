@@ -1,10 +1,10 @@
 .seat {
-    font-size: 2.5vw;
+    font-size: 3vw;
     border: 0.2vw solid var(--black);
     border-radius: 0.5vw;
     box-sizing: border-box;
     width: 8vw;
-    max-width: 90px;
+    max-width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,4 +25,10 @@
 
 .seat__none {
     border: 0.2vw solid var(--none);
+}
+
+@media(min-width: 1000px){
+    .seat {
+        font-size: 32px;
+    }
 }

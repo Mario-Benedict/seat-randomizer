@@ -22,7 +22,7 @@ html, body {
 }
 
 h1 {
-    font-size: 2.5vw;
+    font-size: 3.5vw;
     letter-spacing: 0.4vw;
     word-spacing: 1vw;
     font-weight: 400;
@@ -37,9 +37,15 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 7vw;
+    gap: 6vw;
 }
 
 p {
     margin: 0;
+}
+
+@media(min-width: 1000px){
+    h1 {
+        font-size: 36px;
+    }
 }
