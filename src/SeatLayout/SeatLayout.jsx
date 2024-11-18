@@ -24,8 +24,8 @@ function generateSeat(rowNumber, femaleStudents, maleStudents, sieTatib, sieIT) 
         else {
             for (let i = 0; i < 9; i++) {
                 if (i < 6) {
-                    if (i == 3) resultRowSeats.push(sieTatib);
-                    else if (i == 4) resultRowSeats.push(sieIT);
+                    if (i == 4) resultRowSeats.push(sieTatib);
+                    else if (i == 5) resultRowSeats.push(sieIT);
 
                     else {
                         if (i % 2 == 0) resultRowSeats.push(maleStudents.shift());
