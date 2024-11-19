@@ -5,7 +5,7 @@
     --white: #FFFFFF;
     --none: #68686800;
     --black: #000000;
-    --tatib: #A3E635;
+    --kurkul: #A3E635;
     --it: #61DAFB;
     --empty: #ffffffaa;
 }
@@ -37,7 +37,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6vw;
+    gap: 2vw;
 }
 
 p {

@@ -11,8 +11,8 @@
     aspect-ratio: 1/1;
 }
 
-.seat__tatib {
-    border: 0.2vw solid var(--tatib);
+.seat__kurkul {
+    border: 0.2vw solid var(--kurkul);
 }
 
 .seat__it {

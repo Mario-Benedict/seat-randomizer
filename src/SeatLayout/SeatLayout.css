@@ -21,11 +21,11 @@
 }
 
 .contents p {
-    margin-bottom: 0.75vw;
+    margin-bottom: 0.5vw;
 }
 
-.tatib {
-    color: var(--tatib);
+.kurkul {
+    color: var(--kurkul);
     text-decoration: underline;
 }
 
@@ -59,4 +59,17 @@
     box-sizing: border-box;
     padding: 2.5vw;
     font-size: 1.4vw;
+}
+
+.lecturer-seat {
+    font-size: 2vw;
+    border: 0.2vw solid var(--black);
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    width: 26vw;
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8vw;
 }

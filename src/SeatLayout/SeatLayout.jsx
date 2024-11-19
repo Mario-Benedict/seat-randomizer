@@ -11,104 +11,96 @@ function shuffleArray(array) {
     }
 }
 
-function generateSeat(rowNumber, femaleStudents, maleStudents, sieTatib, sieIT) {
-    let resultRowSeats = [];
+function generateSeat(rowNumber, students, frontSeatStudents, sieKurkul, sieIT) {
+    const resultRowSeats = [];
 
-    if (rowNumber == 1 || rowNumber == 2) {
-        if (rowNumber == 1) {
-            for (let i = 0; i < 9; i++) {
-                if (i % 2 === 0) resultRowSeats.push(maleStudents.shift());
-                else resultRowSeats.push(femaleStudents.shift());
-            }
-        }
-        else {
-            for (let i = 0; i < 9; i++) {
-                if (i < 6) {
-                    if (i == 4) resultRowSeats.push(sieTatib);
-                    else if (i == 5) resultRowSeats.push(sieIT);
-
-                    else {
-                        if (i % 2 == 0) resultRowSeats.push(maleStudents.shift());
-                        else resultRowSeats.push(femaleStudents.shift());
-                    }
-                }
-                else {
-                    if (i % 2 == 0) resultRowSeats.push(femaleStudents.shift());
-                    else resultRowSeats.push(maleStudents.shift());
-                }
-            }
+    if (rowNumber == 1 || rowNumber == 2 || rowNumber == 3) {
+        for (let i = 0; i < 6; i++) {
+            if (rowNumber == 1 && i == 0) resultRowSeats.push("?");
+            else resultRowSeats.push(students.shift());
         }
     }
-    
-    else if (rowNumber == 3 || rowNumber == 4) {
-        for (let i = 0; i < 6; i++) {
-            if (i % 2 == 0) resultRowSeats.push(maleStudents.shift());
-            else resultRowSeats.push(femaleStudents.shift());
+
+    else if (rowNumber == 4) {
+        for (let i = 0; i < 9; i++) {
+            if (i < 4) resultRowSeats.push(frontSeatStudents.shift());
+            else resultRowSeats.push(students.shift());
         }
     }
 
     else if (rowNumber == 5) {
-        while (maleStudents.length > 0) {
-            resultRowSeats.push(maleStudents.shift());
+        let i = 0;
+
+        while (frontSeatStudents.length > 0) {
+            if (i == 4) resultRowSeats.push(sieKurkul); 
+            else if (i == 3) resultRowSeats.push(sieIT);
+            else resultRowSeats.push(frontSeatStudents.shift());
+            i++;
+        }
+
+        while (students.length > 0) {
+            resultRowSeats.push(students.shift());
         }
     }
 
     return resultRowSeats;
 }
 
+function getSieITName(sieIT) {
+    if (sieIT == 17) return "Leonard";
+    else if (sieIT == 22) return "Reynaldi";
+    else if (sieIT == 32) return "Fernandes";
+    else return "?";
+}
+
 function SeatLayout() {
     /*
         NOTE:
             Removed from list:
-            14 = Grace  -> TATIB
-            15 = Hansen -> IT
+            5 = Claudia  -> Kurkul
+            17, 22, 32 = Leonard, Reynaldi, Fernandes -> IT
     */
-    let femaleStudents = [1, 6, 7, 9, 10, 18, 19, 20, 22, 24, 26, 29, 30, 31];
-    let maleStudents = [2, 3, 4, 5, 8, 11, 12, 13, 16, 17, 21, 23, 25, 27, 28, 32, 33, 34, 35];
-    let sieTatib = 14;
-    let sieIT = 15;
 
-    shuffleArray(femaleStudents);
-    shuffleArray(maleStudents);
+    const students = [1, 3, 4, 6, 8, 9, 10, 12, 13, 14, 16, 18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 31, 33];
+    const frontSeatStudents = [2, 7, 11, 15, 25, 26, 34, 35];
+    let itStudents = [17, 22,32];
+
+    const sieKurkul = 5;
+    const sieIT = itStudents[Math.floor(Math.random() * itStudents.length)];
+
+    for (const itStudent of itStudents) {
+        if (itStudent != sieIT) {
+            frontSeatStudents.push(itStudent);
+        }
+    }
+    
+    shuffleArray(students);
+    shuffleArray(frontSeatStudents);
 
     return (
         <div className="seat-layout-container">
-            <div className="seat-row">
-                <Seat studentNumber="none" />
-                <Seat studentNumber="?" />
-                {generateSeat(1, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
-                    <Seat key={number} studentNumber={number} />
-                ))}
-            </div>
-            <div className="seat-row">
-                <Seat studentNumber="none" />
-                <Seat studentNumber="?" />
-                {generateSeat(2, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
-                    <Seat key={number} studentNumber={number} />
-                ))}
-            </div>
             <div className="container">
                 <div className="left">
                     <div className="seat-row">
-                        <Seat studentNumber="none" />
                         <Seat studentNumber="?" />
-                        {generateSeat(3, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
-                            <Seat key={number} studentNumber={number} />
-                        ))}
-                    </div>
-                    <div className="seat-row">
-                        <Seat studentNumber="none" />
                         <Seat studentNumber="?" />
-                        {generateSeat(4, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
+                        {generateSeat(1, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
                             <Seat key={number} studentNumber={number} />
                         ))}
                     </div>
                     <div className="seat-row">
                         <Seat studentNumber="?" />
                         <Seat studentNumber="?" />
-                        <Seat studentNumber="?" />
-                        {generateSeat(5, femaleStudents, maleStudents, sieTatib, sieIT).map((number) => (
+                        {generateSeat(2, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
                             <Seat key={number} studentNumber={number} />
+                        ))}
+                    </div>
+                    
+                    <div className="seat-row">
+                        <Seat studentNumber="?" /> 
+                        <Seat studentNumber="?" />
+                        {generateSeat(3, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
+                            <Seat key={number} studentNumber={number} isRecording={number.isRecording} />
                         ))}
                     </div>
                 </div>
@@ -117,12 +109,31 @@ function SeatLayout() {
                         <p className="header">Notes:</p>
                         <div className="contents">
                             <p>Special Roles:</p>
-                            <p className="tatib">Sie Tatib = 14 (Grace)</p>
-                            <p className="it">Sie IT = 15 (Hansen)</p>
+                            <p className="kurkul">Sie Kurkul = 05 (Claudia)</p>
+                            <p className="it">Sie IT = {sieIT} ({getSieITName(sieIT)})</p>
                         </div>
                         <p>Refresh to regenerate!</p>
                     </div>
                 </div>
+            </div>
+            <div className="seat-row">
+                <Seat studentNumber="?" />
+                <Seat studentNumber="?" />
+                {generateSeat(4, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
+                    <Seat key={number} studentNumber={number} />
+                ))}
+            </div>
+            <div className="seat-row">
+                <Seat studentNumber="?" />
+                <Seat studentNumber="?" />
+                {generateSeat(5, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
+                    <Seat key={number} studentNumber={number} isRecording={number == sieIT} />
+                ))}
+            </div>
+
+            <div className="seat-row">
+                <Seat studentNumber="none" />
+                <div className="lecturer-seat">Lecturer Seat</div>
             </div>
         </div>
     );

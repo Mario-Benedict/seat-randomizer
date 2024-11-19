@@ -1,6 +1,6 @@
-import "./Seat.css"
-
-function Seat({ studentNumber }){
+import "./Seat.css";
+import PropTypes from "prop-types";
+function Seat({ studentNumber, isRecording }) {
     if (studentNumber == 'none'){
         return (
             <div className="seat seat__none"></div>
@@ -11,14 +11,14 @@ function Seat({ studentNumber }){
             <div className="seat seat__empty">{studentNumber}</div>
         )
     }
-    else if (studentNumber == 14){
+    else if (studentNumber == 5){
         return (
-            <div className="seat seat__tatib">{studentNumber}</div>
+            <div className="seat seat__kurkul">{studentNumber.toString().padStart(2, '0')}</div>
         )
     }
-    else if (studentNumber == 15){
+    else if (isRecording){
         return (
-            <div className="seat seat__it">{studentNumber}</div>
+            <div className="seat seat__it">{studentNumber.toString().padStart(2, '0')}</div>
         )
     }
     else {
@@ -32,5 +32,10 @@ function Seat({ studentNumber }){
         )
     }
 }
+
+Seat.propTypes = {
+    studentNumber: PropTypes.number,
+    isRecording: PropTypes.bool,
+};
 
 export default Seat;
