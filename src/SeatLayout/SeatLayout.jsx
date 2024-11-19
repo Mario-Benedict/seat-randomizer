@@ -53,6 +53,10 @@ function getSieITName(sieIT) {
     else return "?";
 }
 
+function regenerate() {
+    window.location.reload();
+}
+
 function SeatLayout() {
     /*
         NOTE:
@@ -112,7 +116,10 @@ function SeatLayout() {
                             <p className="kurkul">Sie Kurkul = 05 (Claudia)</p>
                             <p className="it">Sie IT = {sieIT} ({getSieITName(sieIT)})</p>
                         </div>
-                        <p>Refresh to regenerate!</p>
+                        
+                        <button onClick={regenerate} className="regenerate-button">
+                            Click to regenerate!
+                        </button>
                     </div>
                 </div>
             </div>

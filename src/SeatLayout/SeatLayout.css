@@ -73,3 +73,13 @@
     justify-content: center;
     height: 8vw;
 }
+
+.regenerate-button {
+    font-size: 1.5vw;
+    padding: 0.5vw 1vw;
+    border: 0.2vw solid var(--black);
+    border-radius: 0.5vw;
+    background-color: var(--black);
+    color: var(--white);
+    cursor: pointer;
+}
