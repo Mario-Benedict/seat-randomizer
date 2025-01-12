@@ -47,9 +47,9 @@ function generateSeat(rowNumber, students, frontSeatStudents, sieKurkul, sieIT) 
 }
 
 function getSieITName(sieIT) {
-    if (sieIT == 17) return "Leonard";
-    else if (sieIT == 22) return "Reynaldi";
-    else if (sieIT == 32) return "Fernandes";
+    if (sieIT == 22) return "Reynaldi";
+    else if (sieIT == 26) return "Shallom";
+    else if (sieIT == 34) return "Wilson";
     else return "?";
 }
 
@@ -66,10 +66,10 @@ function SeatLayout() {
     */
 
     const students = [1, 3, 4, 6, 8, 9, 10, 12, 13, 14, 16, 18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 31, 33];
-    const frontSeatStudents = [2, 7, 11, 15, 25, 26, 34, 35];
-    let itStudents = [17, 22,32];
+    const frontSeatStudents = [5, 7, 11, 15, 25, 32, 17, 35];
+    let itStudents = [22, 26 ,34];
 
-    const sieKurkul = 5;
+    const sieKurkul = 2;
     const sieIT = itStudents[Math.floor(Math.random() * itStudents.length)];
 
     for (const itStudent of itStudents) {
@@ -113,7 +113,7 @@ function SeatLayout() {
                         <p className="header">Notes:</p>
                         <div className="contents">
                             <p>Special Roles:</p>
-                            <p className="kurkul">Sie Kurkul = 05 (Claudia)</p>
+                            <p className="kurkul">Sie Kurkul = 02 (Beben)</p>
                             <p className="it">Sie IT = {sieIT} ({getSieITName(sieIT)})</p>
                         </div>
                         

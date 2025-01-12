@@ -11,7 +11,7 @@ function Seat({ studentNumber, isRecording }) {
             <div className="seat seat__empty">{studentNumber}</div>
         )
     }
-    else if (studentNumber == 5){
+    else if (studentNumber == 2){
         return (
             <div className="seat seat__kurkul">{studentNumber.toString().padStart(2, '0')}</div>
         )
