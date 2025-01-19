@@ -19,6 +19,10 @@
     border: 0.2vw solid var(--it);
 }
 
+.seat__tatib {
+    border: 0.2vw solid var(--tatib);
+}
+
 .seat__empty {
     border: 0.2vw solid var(--empty);
 }
