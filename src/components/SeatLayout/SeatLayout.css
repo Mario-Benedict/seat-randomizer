@@ -16,7 +16,6 @@
 }
 
 .header {
-    margin-bottom: 1vw;
     font-weight: 600;
 }
 
@@ -42,6 +41,7 @@
 .container {
     display: flex;
     flex-direction: row;
+    align-items: end;
 }
 
 .left {
@@ -62,7 +62,8 @@
     justify-content: space-between;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 1.2vw;
+    /* padding: 1.2vw; */
+    padding: 0 1.2vw;
     font-size: 1.4vw;
 }
 
@@ -77,14 +78,4 @@
     align-items: center;
     justify-content: center;
     height: 8vw;
-}
-
-.regenerate-button {
-    font-size: 1.5vw;
-    padding: 0.5vw 1vw;
-    border: 0.2vw solid var(--black);
-    border-radius: 0.5vw;
-    background-color: var(--black);
-    color: var(--white);
-    cursor: pointer;
 }

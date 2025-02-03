@@ -1,4 +1,4 @@
-import SeatLayout from "./SeatLayout/SeatLayout"
+import SeatLayout from "./components/SeatLayout/SeatLayout"
 
 function App() {
     return (<>

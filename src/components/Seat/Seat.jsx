@@ -22,7 +22,7 @@ function Seat({ studentNumber, isRecording }) {
         )
     } else if (studentNumber == 5 || studentNumber == 29) {
         return (
-            <div className="seat seat__tatib">{studentNumber.toString().padStart(2, )}</div>
+            <div className="seat seat__tatib">{studentNumber.toString().padStart(2, '0')}</div>
         )
     }
     else {
