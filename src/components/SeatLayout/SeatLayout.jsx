@@ -2,16 +2,6 @@ import "./SeatLayout.css"
 import Seat from "../Seat/Seat"
 import { generateSeat } from "../../helper/generateSeat";
 
-// Durstenfeld shuffle algorithm
-function shuffleArray(array) {
-    for (var i = array.length - 1; i >= 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-}
-
 function getSieITName(sieIT) {
     if (sieIT === 22) return "Reynaldi";
     else if (sieIT === 26) return "Shallom";
@@ -33,25 +23,12 @@ function SeatLayout() {
             22, 26, 34 = Reynaldi, Shallom, Wilson -> IT
     */
 
-    const students = [1, 3, 4, 6, 8, 9, 10, 12, 13, 14, 16, 18, 19, 20, 21, 23, 24, 27, 28, 30, 31, 33];
-    const frontSeatStudents = [7, 11, 15, 25, 32, 17, 35];
     let itStudents = [22, 26, 34];
     let tatibStudents = [5, 29];
 
     const currentWeek = ((new Date() - new Date("2025-01-26")) / (1000 * 60 * 60 * 24 * 7));
-
     const itIndex = Math.round(currentWeek) % itStudents.length;
-
     const sieIT = itStudents[itIndex];
-
-    for (const itStudent of itStudents) {
-        if (itStudent != sieIT) {
-            frontSeatStudents.push(itStudent);
-        }
-    }
-    
-    shuffleArray(students);
-    shuffleArray(frontSeatStudents);
 
     const seat = generateSeat();
 
