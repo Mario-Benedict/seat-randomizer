@@ -16,7 +16,7 @@ function generateSeat(rowNumber, students, sieKurkul, sieIT, sieLogistik) {
 
     if (rowNumber <= 3) {
         for (let i = 0; i < 7; i++) {
-            if (rowNumber === 1 && i === 0) resultRowSeats.push("?");
+            if (rowNumber === 1 && (i === 0 || i === 1)) resultRowSeats.push("?");
             else resultRowSeats.push(students.shift());
         }
     }
@@ -69,7 +69,7 @@ function SeatLayout() {
     const sieIT = itStudents[itIndex];
     const sieLogistik = logistikStudents[logistikIndex];
 
-    const students = Array.from({ length: 36 }, (_, i) => i + 1)
+    const students = Array.from({ length: 35 }, (_, i) => i + 1)
         .filter((number) => ![17, sieIT, sieLogistik].includes(number))
 
     shuffleArray(students);
