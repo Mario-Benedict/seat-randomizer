@@ -19,6 +19,10 @@
     border: 0.2vw solid var(--it);
 }
 
+.seat__logistik {
+    border: 0.2vw solid var(--logistik);
+}
+
 .seat__empty {
     border: 0.2vw solid var(--empty);
 }

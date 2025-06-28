@@ -11,35 +11,30 @@ function shuffleArray(array) {
     }
 }
 
-function generateSeat(rowNumber, students, frontSeatStudents, sieKurkul, sieIT) {
+function generateSeat(rowNumber, students, sieKurkul, sieIT, sieLogistik) {
     const resultRowSeats = [];
 
-    if (rowNumber == 1 || rowNumber == 2 || rowNumber == 3) {
-        for (let i = 0; i < 6; i++) {
-            if (rowNumber == 1 && i == 0) resultRowSeats.push("?");
+    if (rowNumber <= 3) {
+        for (let i = 0; i < 7; i++) {
+            if (rowNumber === 1 && i === 0) resultRowSeats.push("?");
             else resultRowSeats.push(students.shift());
         }
     }
 
     else if (rowNumber == 4) {
-        for (let i = 0; i < 9; i++) {
-            if (i < 4) resultRowSeats.push(frontSeatStudents.shift());
-            else resultRowSeats.push(students.shift());
+        for (let i = 0; i < 8; i++) {
+            resultRowSeats.push(students.shift());
         }
     }
 
     else if (rowNumber == 5) {
         let i = 0;
-
-        while (frontSeatStudents.length > 0) {
-            if (i == 4) resultRowSeats.push(sieKurkul); 
-            else if (i == 3) resultRowSeats.push(sieIT);
-            else resultRowSeats.push(frontSeatStudents.shift());
+        while (students.length > 0 || i < 7) {
+            if (i === 4) resultRowSeats.push(sieIT);
+            else if (i === 5) resultRowSeats.push(sieKurkul);
+            else if (i === 6) resultRowSeats.push(sieLogistik);
+            else resultRowSeats.push(students.shift());
             i++;
-        }
-
-        while (students.length > 0) {
-            resultRowSeats.push(students.shift());
         }
     }
 
@@ -47,35 +42,37 @@ function generateSeat(rowNumber, students, frontSeatStudents, sieKurkul, sieIT) 
 }
 
 function getSieITName(sieIT) {
-    if (sieIT == 17) return "Leonard";
-    else if (sieIT == 22) return "Reynaldi";
-    else if (sieIT == 32) return "Fernandes";
+    if (sieIT == 4) return "Carissa";
+    else if (sieIT == 34) return "Wilson";
+    else if (sieIT == 35) return "Yonami";
+    else return "?";
+}
+
+function getLogistikName(sieLogistik) {
+    if (sieLogistik == 9) return "Evan";
+    else if (sieLogistik == 13) return "Ivan";
+    else if (sieLogistik == 15) return "Jeremy";
+    else if (sieLogistik == 30) return "Steven";
     else return "?";
 }
 
 function SeatLayout() {
-    /*
-        NOTE:
-            Removed from list:
-            5 = Claudia  -> Kurkul
-            17, 22, 32 = Leonard, Reynaldi, Fernandes -> IT
-    */
+    let itStudents = [4, 35, 34];
+    let logistikStudents = [9, 13, 15, 30]; 
 
-    const students = [1, 3, 4, 6, 8, 9, 10, 12, 13, 14, 16, 18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 31, 33];
-    const frontSeatStudents = [2, 7, 11, 15, 25, 26, 34, 35];
-    let itStudents = [17, 22,32];
+    const sieKurkul = 17;
 
-    const sieKurkul = 5;
-    const sieIT = itStudents[Math.floor(Math.random() * itStudents.length)];
+    const currentWeek = ((new Date() - new Date("2025-06-21")) / (1000 * 60 * 60 * 24 * 7));
+    const itIndex = Math.round(currentWeek) % itStudents.length;
+    const logistikIndex = Math.round(currentWeek) % logistikStudents.length;
 
-    for (const itStudent of itStudents) {
-        if (itStudent != sieIT) {
-            frontSeatStudents.push(itStudent);
-        }
-    }
-    
+    const sieIT = itStudents[itIndex];
+    const sieLogistik = logistikStudents[logistikIndex];
+
+    const students = Array.from({ length: 36 }, (_, i) => i + 1)
+        .filter((number) => ![17, sieIT, sieLogistik].includes(number))
+
     shuffleArray(students);
-    shuffleArray(frontSeatStudents);
 
     return (
         <div className="seat-layout-container">
@@ -83,23 +80,20 @@ function SeatLayout() {
                 <div className="left">
                     <div className="seat-row">
                         <Seat studentNumber="?" />
-                        <Seat studentNumber="?" />
-                        {generateSeat(1, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
+                        {generateSeat(1, students, sieKurkul, sieIT, sieLogistik).map((number) => (
                             <Seat key={number} studentNumber={number} />
                         ))}
                     </div>
                     <div className="seat-row">
                         <Seat studentNumber="?" />
-                        <Seat studentNumber="?" />
-                        {generateSeat(2, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
+                        {generateSeat(2, students, sieKurkul, sieIT, sieLogistik).map((number) => (
                             <Seat key={number} studentNumber={number} />
                         ))}
                     </div>
                     
                     <div className="seat-row">
-                        <Seat studentNumber="?" /> 
                         <Seat studentNumber="?" />
-                        {generateSeat(3, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
+                        {generateSeat(3, students, sieKurkul, sieIT, sieLogistik).map((number) => (
                             <Seat key={number} studentNumber={number} isRecording={number.isRecording} />
                         ))}
                     </div>
@@ -109,8 +103,9 @@ function SeatLayout() {
                         <p className="header">Notes:</p>
                         <div className="contents">
                             <p>Special Roles:</p>
-                            <p className="kurkul">Sie Kurkul = 05 (Claudia)</p>
+                            <p className="kurkul">Sie Kurkul = 17 (Leonard)</p>
                             <p className="it">Sie IT = {sieIT} ({getSieITName(sieIT)})</p>
+                            <p className="logistik">Sie Logistik = {sieLogistik} ({getLogistikName(sieLogistik)})</p>
                         </div>
                         <p>Refresh to regenerate!</p>
                     </div>
@@ -118,17 +113,19 @@ function SeatLayout() {
             </div>
             <div className="seat-row">
                 <Seat studentNumber="?" />
-                <Seat studentNumber="?" />
-                {generateSeat(4, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
+                {generateSeat(4, students, sieKurkul, sieIT, sieLogistik).map((number) => (
                     <Seat key={number} studentNumber={number} />
                 ))}
+                <Seat studentNumber="?" />
+                <Seat studentNumber="?" />
             </div>
             <div className="seat-row">
                 <Seat studentNumber="?" />
-                <Seat studentNumber="?" />
-                {generateSeat(5, students, frontSeatStudents, sieKurkul, sieIT).map((number) => (
-                    <Seat key={number} studentNumber={number} isRecording={number == sieIT} />
+                {generateSeat(5, students, sieKurkul, sieIT, sieLogistik).map((number) => (
+                    <Seat key={number} studentNumber={number} isRecording={number === sieIT} isLogistik={number === sieLogistik} />
                 ))}
+                <Seat studentNumber="?" />
+                <Seat studentNumber="?" />
             </div>
 
             <div className="seat-row">
