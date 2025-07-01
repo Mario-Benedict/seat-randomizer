@@ -57,7 +57,7 @@ function getLogistikName(sieLogistik) {
 }
 
 function SeatLayout() {
-    let itStudents = [4, 35, 34];
+    let itStudents = [34, 4, 35];
     let logistikStudents = [9, 13, 15, 30]; 
 
     const sieKurkul = 17;
