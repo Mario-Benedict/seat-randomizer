@@ -57,12 +57,12 @@ function getLogistikName(sieLogistik) {
 }
 
 function SeatLayout() {
-    let itStudents = [34, 4, 35];
+    let itStudents = [35, 34, 4];
     let logistikStudents = [9, 13, 15, 30]; 
 
     const sieKurkul = 17;
 
-    const currentWeek = ((new Date() - new Date("2025-06-21")) / (1000 * 60 * 60 * 24 * 7));
+    const currentWeek = ((new Date() - new Date("2025-06-22")) / (1000 * 60 * 60 * 24 * 7));
     const itIndex = Math.round(currentWeek) % itStudents.length;
     const logistikIndex = Math.round(currentWeek) % logistikStudents.length;
 
@@ -72,6 +72,8 @@ function SeatLayout() {
     const students = Array.from({ length: 35 }, (_, i) => i + 1)
         .filter((number) => ![17, sieIT, sieLogistik].includes(number))
 
+    shuffleArray(students);
+    shuffleArray(students);
     shuffleArray(students);
 
     return (
